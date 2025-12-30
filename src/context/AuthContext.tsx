@@ -1,3 +1,5 @@
+"use client";
+
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 
@@ -13,11 +15,8 @@ interface AuthContextType {
 
 export const AuthContext = createContext<AuthContextType | null>(null);
 
-interface AuthProviderProps {
-  children: React.ReactNode;
-}
 
-export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
+export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<any>(null);
   const [isAuth , setIsAuth] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
@@ -26,13 +25,19 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const checkAuth = async () => {
     try {
       const { data } = await axios.get("http://127.0.0.1:8000/api/v1/check-auth", { withCredentials: true });
-      if(data.success === true){
-        setIsAuth(data.user);
+      if(data.success){
+        setIsAuth(true);
+        await fetchUser();
+      }else{
+        setIsAuth(false);
+        setUser(null);
       }
-    } catch (error) {
+    } catch {
       setUser(null);
+      setIsAuth(false);
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   const fetchUser = async () => {
@@ -43,22 +48,21 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       setUser(res.data.data);
   };
 
-  useEffect(() => {
-    checkAuth();
-    fetchUser();
-  }, []);
-
 
   const logout = async () => {
     try {
       await axios.post("http://127.0.0.1:8000/api/v1/logout", {}, { withCredentials: true });
       setUser(null); 
-      
+      setIsAuth(false);
     } catch (error) {
       console.error("Logout failed:", error);
     }
   };
 
+  
+  useEffect(() => {
+    checkAuth();
+  }, []);
 
 
   return (
