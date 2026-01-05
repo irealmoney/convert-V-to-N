@@ -24,7 +24,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const checkAuth = async () => {
     try {
-      const { data } = await axios.get("http://127.0.0.1:8000/api/v1/check-auth", { withCredentials: true });
+      const { data } = await axios.get("/api/v1/check-auth", { withCredentials: true });
       if(data.success){
         setIsAuth(true);
         await fetchUser();
@@ -41,17 +41,27 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const fetchUser = async () => {
-      const res = await axios.get("http://127.0.0.1:8000/api/v1/user", {
+    try {
+      const res = await axios.get("/api/v1/user", {
           withCredentials: true,
       });
       
       setUser(res.data.data);
+    } catch (error: any) {
+      console.error("fetchUser error:", {
+        status: error.response?.status,
+        statusText: error.response?.statusText,
+        data: error.response?.data,
+        message: error.message,
+      });
+      setUser(null);
+    }
   };
 
 
   const logout = async () => {
     try {
-      await axios.post("http://127.0.0.1:8000/api/v1/logout", {}, { withCredentials: true });
+      await axios.post("/api/v1/logout", {}, { withCredentials: true });
       setUser(null); 
       setIsAuth(false);
     } catch (error) {
