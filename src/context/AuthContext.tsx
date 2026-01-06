@@ -59,7 +59,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
 
-  const logout = async () => {
+  const logout = async () => { 
     try {
       await axios.post("/api/v1/logout", {}, { withCredentials: true });
       setUser(null); 

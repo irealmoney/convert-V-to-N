@@ -3,11 +3,9 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import RegisterForm from "./Register";
 import LoginForm from "./Login";
-import { useLoading } from "@/context/LoadingContext";
 
 export default function Auth() {
     const [switchForm , setSwitchForm] = useState(false)
-    const {loading , showLoading, hideLoading } = useLoading();
     const switchFormHandler = () => {
         setSwitchForm(!switchForm);
     }
@@ -21,9 +19,7 @@ export default function Auth() {
     }, [])
 
     return (
-        loading ? ''
-            :
-        (<div className={`h-screen w-full flex items-center z-10 relative overflow-hidden`}>
+        <div className={`h-screen w-full flex items-center z-10 relative overflow-hidden`}>
             {/* پس‌زمینه */}
             <div className="absolute inset-0 h-screen w-screen bg-[#F15A22] -z-10 overflow-hidden">
             <img
@@ -69,7 +65,7 @@ export default function Auth() {
                     )}
                 </AnimatePresence>
             </div>
-        </div>)
+        </div>
     )
 
 }
