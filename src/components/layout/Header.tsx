@@ -446,7 +446,7 @@ export default function Header() {
 
                     {!user ? (
                     <div className='ml-1 px-1'>
-                        <Link className='flex flex-row-reverse items-center border-2 font-bold text-sm border-[#F15A22] rounded-xl px-2 py-1 text-[#F15A22] duration-400 hover:bg-[#F15A22] hover:text-white' href={'/auth/user'}>
+                        <Link className='flex flex-row-reverse items-center border-2 font-bold text-sm border-[#F15A22] rounded-xl px-2 py-1 text-[#F15A22] duration-400 hover:bg-[#F15A22] hover:text-white' href={'/auth'}>
                         <span className=''> ورود - عضویت </span>  <TbLogin className='size-5'/>
                         </Link>
                     </div>

@@ -24,7 +24,12 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const checkAuth = async () => {
     try {
-      const { data } = await axios.get("/api/v1/check-auth", { withCredentials: true });
+      const { data } = await axios.get("/api/v1/check-auth", { 
+        withCredentials: true,
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
       if(data.success){
         setIsAuth(true);
         await fetchUser();
@@ -32,7 +37,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         setIsAuth(false);
         setUser(null);
       }
-    } catch {
+    } catch (error) {
+      console.error("checkAuth error:", error);
       setUser(null);
       setIsAuth(false);
     } finally {
@@ -44,15 +50,20 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     try {
       const res = await axios.get("/api/v1/user", {
           withCredentials: true,
+          headers: {
+            'Content-Type': 'application/json'
+          }
       });
       
+      console.log("fetchUser success:", res.data);
       setUser(res.data.data);
     } catch (error: any) {
-      console.error("fetchUser error:", {
+      console.log("fetchUser error:", {
         status: error.response?.status,
         statusText: error.response?.statusText,
         data: error.response?.data,
         message: error.message,
+        headers: error.response?.headers,
       });
       setUser(null);
     }
