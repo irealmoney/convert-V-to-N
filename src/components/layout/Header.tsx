@@ -79,7 +79,7 @@ export default function Header() {
 
     searchTimeout.current = setTimeout(async () => {
       try {
-        const res = await axios.get(`http://127.0.0.1:8000/api/v1/g-search?query=${value}`);
+        const res = await axios.get(`http://localhost:8000/api/v1/g-search?query=${value}`);
         setSearchResults(res.data);
       } catch (err) {
         toast.error(`خطا در دریافت نتایج جستجو: ${err}`);
@@ -137,7 +137,7 @@ export default function Header() {
 
 
   const checkIsAdmin = async () => {
-    const checkAdmin = await axios.get("http://127.0.0.1:8000/api/v1/check-admin", { withCredentials: true });
+    const checkAdmin = await axios.get("http://localhost:8000/api/v1/check-admin", { withCredentials: true });
 
     if (checkAdmin.data.user === 'admin') {
       setIsAdmin(true);
@@ -146,7 +146,7 @@ export default function Header() {
     }
   }
   const fetchAllCategories = async () => {
-    let res = await axios.get("http://127.0.0.1:8000/api/v1/categories", { withCredentials: true })
+    let res = await axios.get("http://localhost:8000/api/v1/categories", { withCredentials: true })
     if (res.data.success === true) {
       setCategory(res.data.data)
     } else {
@@ -244,7 +244,7 @@ export default function Header() {
     }, 300); 
   };
 
-  const baseURL = "http://127.0.0.1:8000/";
+  const baseURL = "http://localhost:8000/";
 
 
 

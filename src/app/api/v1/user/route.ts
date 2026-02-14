@@ -6,7 +6,7 @@ export async function GET(request: NextRequest) {
     
     console.log('🔍 Frontend requesting user:', { cookie: cookie ? '✅ exists' : '❌ missing' });
 
-    const response = await fetch('http://127.0.0.1:8000/api/v1/user', {
+    const response = await fetch('http://localhost:8000/api/v1/user', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

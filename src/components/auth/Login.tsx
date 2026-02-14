@@ -87,7 +87,7 @@ export default function LoginForm({ switchFormHandler }: LoginFormProps) {
 
         data = { ...data, captchaToken: token };
 
-        let res = await axios.post("http://127.0.0.1:8000/api/v1/make-login-otp", data, { withCredentials: true });
+        let res = await axios.post("http://localhost:8000/api/v1/make-login-otp", data, { withCredentials: true });
         if (res.data.success === true) {
             toast.success(res.data.message, { position: "top-right", autoClose: 7000 });
             setStep("code-verify");
@@ -110,7 +110,7 @@ export default function LoginForm({ switchFormHandler }: LoginFormProps) {
 
         const token = await executeRecaptcha("submit");
 
-        let res = await axios.post("http://127.0.0.1:8000/api/v1/verify-otp", {
+        let res = await axios.post("http://localhost:8000/api/v1/verify-otp", {
         phonenumber,
         code: codevalue,
         captchaToken: token
@@ -152,7 +152,7 @@ export default function LoginForm({ switchFormHandler }: LoginFormProps) {
         };
 
         try {
-        let res = await axios.post("http://127.0.0.1:8000/api/v1/login", data, { withCredentials: true });
+        let res = await axios.post("http://localhost:8000/api/v1/login", data, { withCredentials: true });
         if (res.data.success === true) {
             toast.success('ورود موفقیت آمیز بود', { position: "top-right", autoClose: 7000 });
             resetPassword();

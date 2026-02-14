@@ -48,23 +48,15 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const fetchUser = async () => {
     try {
-      const res = await axios.get("/api/v1/user", {
+      const res = await axios.get("http://localhost:8000/api/v1/user", {
           withCredentials: true,
           headers: {
             'Content-Type': 'application/json'
           }
       });
-      
-      console.log("fetchUser success:", res.data);
+      console.log(res);
       setUser(res.data.data);
     } catch (error: any) {
-      console.log("fetchUser error:", {
-        status: error.response?.status,
-        statusText: error.response?.statusText,
-        data: error.response?.data,
-        message: error.message,
-        headers: error.response?.headers,
-      });
       setUser(null);
     }
   };
@@ -72,7 +64,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const logout = async () => { 
     try {
-      await axios.post("/api/v1/logout", {}, { withCredentials: true });
+      await axios.post("http://localhost:8000/api/v1/logout", {}, { withCredentials: true });
       setUser(null); 
       setIsAuth(false);
     } catch (error) {

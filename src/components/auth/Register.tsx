@@ -88,7 +88,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ switchFormHandler }) => {
 
     try {
       showLoading(); // نمایش لودینگ
-      let res = await axios.post("http://127.0.0.1:8000/api/v1/register", data, { withCredentials: true });
+      let res = await axios.post("http://localhost:8000/api/v1/register", data, { withCredentials: true });
 
       if (res.data.success === true) {
         toast.info(res.data.message, {
@@ -169,7 +169,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ switchFormHandler }) => {
 
     try {
         showLoading();
-      let res = await axios.post("http://127.0.0.1:8000/api/v1/verify-otp", {
+      let res = await axios.post("http://localhost:8000/api/v1/verify-otp", {
         phonenumber,
         code: codevalue,
         captchaToken: token
