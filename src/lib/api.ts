@@ -61,7 +61,7 @@ export async function getProducts(): Promise<Product[]> {
   if (!res.ok) throw new Error("خطا در دریافت محصولات");
 
   const data = await res.json();
-  return data.data;
+  return data.items;
 }
 
 export const makeLoginOTP = (data : any) => apiClient.post('/make-login-otp', data);

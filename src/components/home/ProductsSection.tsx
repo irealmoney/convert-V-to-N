@@ -8,6 +8,8 @@ interface Props {
 }
 
 export default function ProductSection({ products }: Props) {
+
+  console.log(products);
   return (
     <section>
       {products?.map((product) => (
