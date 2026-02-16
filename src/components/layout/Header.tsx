@@ -540,12 +540,12 @@ export default function Header() {
             </Disclosure>
 
             <div dir='rtl' className='relative mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 py-3 max-lg:hidden'>
-            <div className='flex flex-row justify-start'>
+            <div className='flex flex-row justify-start font-bold text-sm'>
                 {/* <button onClick={() => {setOpenMenu(!openMenu) ; setShowDogCategories(false) ; setBirdCategories(false) ; setCatCategories(false) ; setRodentCategories(false) }} className='flex flex-row items-center text-sm pl-4 cursor-pointer text-gray-500 border-l-2 border-gray-300  duration-300 hover:text-gray-800'>
                 <BsList className='size-5 ml-2' /> دسته بندی ها  
                 </button> */}
 
-                <Link  className='flex flex-row items-center text-sm px-4 cursor-pointer text-gray-500 duration-300 hover:text-gray-800  border-l-2 border-gray-300' href={'/'}>
+                <Link  className='flex flex-row items-center text-sm pl-4 cursor-pointer text-gray-400 duration-300 hover:text-gray-800  border-l-2 border-gray-300' href={'/'}>
                 خانه 
                 </Link>
 
@@ -553,11 +553,11 @@ export default function Header() {
                 <NavbarCategories category={category}/>
 
 
-                <Link href={'/best-offers'} className='flex flex-row items-center text-sm px-4 cursor-pointer text-gray-500 duration-300 hover:text-gray-800'>
+                <Link href={'/best-offers'} className='flex flex-row items-center text-sm pl-4 cursor-pointer text-gray-400 duration-300 hover:text-gray-800'>
                 فروش ویژه
                 </Link>
 
-                <Link href={'/about'} className='flex flex-row items-center text-sm px-4 cursor-pointer text-gray-500 duration-300 hover:text-gray-800'>
+                <Link href={'/about'} className='flex flex-row items-center text-sm pl-4 cursor-pointer text-gray-400 duration-300 hover:text-gray-800'>
                     تماس با ما
                 </Link>
 

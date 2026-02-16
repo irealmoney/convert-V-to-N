@@ -2,6 +2,7 @@ import Image from "next/image";
 import {getProducts , getBanners} from './../lib/api'
 import BannerSection from './../components/home/BannerSection'
 import ProductSection from './../components/home/ProductsSection'
+import CategoryBar from "@/components/home/CategoryBar";
 
 
 export default async function Home() {
@@ -14,8 +15,12 @@ export default async function Home() {
 
 
   return (
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 ">
+      <main className="flex min-h-screen w-full max-w-7xl mx-auto flex-col items-center justify-between px-8 py-8">
           <BannerSection banners={banners} />
+          <CategoryBar />
+
+
+
           <ProductSection products={products} />
 
       </main>

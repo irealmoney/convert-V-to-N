@@ -98,7 +98,7 @@ export default function NavbarCategories({ category }: { category: any }) {
             className="relative"
           >
             <button
-              className={`transition-all text-gray-500 duration-300 hover:text-gray-800 ease-in-out px-4  rounded  ${
+              className={`transition-all text-gray-400 duration-300 hover:text-gray-800 ease-in-out px-4  rounded  ${
                 activeAnimal === animal.key ? 'text-[#F15A22]' : ''
               }`}
             >
@@ -126,7 +126,7 @@ export default function NavbarCategories({ category }: { category: any }) {
                     >
                         <Link
                             href={`/products/${parent.slug}`}
-                            className={`text-sm font-bold text-gray-500 duration-300 hover:text-gray-800 flex flex-row-reverse ${hasChildren ? 'justify-between' : 'justify-end'} `}
+                            className={`text-sm font-bold text-gray-500 duration-300 hover:text-gray-400 flex flex-row-reverse ${hasChildren ? 'justify-between' : 'justify-end'} `}
                         >
                             {hasChildren ? <IoIosArrowBack /> : ''}
                             {parent.name}
