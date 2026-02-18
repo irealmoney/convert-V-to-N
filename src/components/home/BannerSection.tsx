@@ -35,8 +35,6 @@ export default function BannerSection({ banners  } : Props) {
     }
   }
 
-  console.log("Current index:", current, "Clicked index:", api);
-
 
   return (
     <section>

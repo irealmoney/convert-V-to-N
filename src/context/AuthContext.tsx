@@ -54,7 +54,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             'Content-Type': 'application/json'
           }
       });
-      console.log(res);
+      
       setUser(res.data.data);
     } catch (error: any) {
       setUser(null);

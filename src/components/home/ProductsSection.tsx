@@ -9,11 +9,10 @@ interface Props {
 
 export default function ProductSection({ products }: Props) {
 
-  console.log(products);
   return (
     <section>
       {products?.map((product) => (
-        <div key={product._id}>
+        <div key={product.ID}>
           <img src={product.image} alt={product.title} />
           <h3>{product.title}</h3>
           <p>{product.price.toLocaleString()} تومان</p>

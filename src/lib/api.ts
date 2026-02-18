@@ -10,7 +10,7 @@ export interface Banner {
 }
 
 export interface Product {
-  _id: string;
+  ID: string;
   title: string;
   image: string;
   price: number;
@@ -61,7 +61,8 @@ export async function getProducts(): Promise<Product[]> {
   if (!res.ok) throw new Error("خطا در دریافت محصولات");
 
   const data = await res.json();
-  return data.items;
+  const items: Product[] = data?.data.items;
+  return items;
 }
 
 export const makeLoginOTP = (data : any) => apiClient.post('/make-login-otp', data);
