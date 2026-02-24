@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Product } from "@/lib/api";
+import ProductCard from "../ui/ProductCard";
 
 
 interface Props {
@@ -33,17 +34,9 @@ export default function BestOffer({ products }: Props) {
                             key={index}
                             href={`/products/${p.ID}`}
                             draggable={false}
-                            className="min-w-40 max-w-50 shrink-0 bg-white rounded-2xl p-4 group hover:shadow-md transition"
+                            className="min-w-56 max-w-50 shrink-0 bg-white rounded-2xl"
                         >
-                            <div className="w-full aspect-square flex items-center justify-center overflow-hidden rounded mb-3">
-                                {p.image ? (
-                                    <img src={p.image} alt={p.title} className="w-full h-full object-contain" />
-                                ) : (
-                                    <div className="text-sm text-gray-500">تصویری موجود نیست</div>
-                                )}
-                            </div>
-                            <h4 className="text-sm font-bold text-gray-700 line-clamp-2 text-right">{p.title}</h4>
-                            <p className="mt-2 text-center text-gray-900"> <span className="text-[#F15A22] font-bold">{p.price ?? "-"}</span> تومان</p>
+                            <ProductCard product={p} />
                         </Link>
                     ))}
                 </div>
